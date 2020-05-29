@@ -25,10 +25,6 @@ public class Main {
 //
 //        newList.removeAll(listA);
 //        System.out.println(newList);
-        String datePattern = "yyyy-MM-dd hh:mm:ss";
-        String datePat = "yyyy-MM-dd";
-        SimpleDateFormat ft = new SimpleDateFormat (datePat);
-        Date startTime = ft.parse("2017-08-29 11:20:18");
     }
 }
 
