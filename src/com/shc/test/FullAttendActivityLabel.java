@@ -41,7 +41,8 @@ public enum FullAttendActivityLabel {
     }
 
     public static void main(String[] args) {
-        System.out.printf(FullAttendActivityLabel.getLabel(1));
+        String type = FullAttendActivityLabel.refunded.name();
+        System.out.print(type);
     }
 
 }

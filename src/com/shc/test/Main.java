@@ -1,5 +1,7 @@
 package com.shc.test;
 
+import sun.nio.ch.sctp.SendFailed;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -25,6 +27,27 @@ public class Main {
 //
 //        newList.removeAll(listA);
 //        System.out.println(newList);
+
+//        getYesterdayRange();
+
+
+    }
+
+
+    public static Map getYesterdayRange() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Map condition=new HashMap();
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.MILLISECOND,0);
+        calendar.set(Calendar.SECOND,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.HOUR_OF_DAY,0);
+        condition.put("endDate",df.format(calendar.getTime()));
+        System.out.println("endDate is " + df.format(calendar.getTime()));
+        calendar.set(Calendar.HOUR_OF_DAY,-24);
+        condition.put("startDate",df.format(calendar.getTime()));
+        System.out.println("startDate is " + df.format(calendar.getTime()));
+        return condition;
     }
 }
 
