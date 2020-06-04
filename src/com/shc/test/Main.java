@@ -29,10 +29,21 @@ public class Main {
 //        System.out.println(newList);
 
 //        getYesterdayRange();
-
+        dateToStamp();
 
     }
 
+    static void dateToStamp(){
+        // 10位的秒级别的时间戳
+        long time1 = 1591164945;
+        String result1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(time1 * 1000));
+        System.out.println("10位数的时间戳（秒）--->Date:" + result1);
+        Date date1 = new Date(time1*1000);   //对应的就是时间戳对应的Date
+        // 13位的秒级别的时间戳
+        double time2 = 1515730332000d;
+        String result2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(time2);
+        System.out.println("13位数的时间戳（毫秒）--->Date:" + result2);
+    }
 
     public static Map getYesterdayRange() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
