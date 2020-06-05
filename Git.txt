@@ -1,0 +1,81 @@
+删除分支
+
+删除本地已合并的分支： git branch -d [branchname] 
+
+删除远程分支: git push origin --delete [branchname]
+
+
+取消暂存文件
+
+1、git reset <file>
+2、git reset HEAD <file>
+
+上面俩种方式均可以
+HEAD：可以理解为一个指针（具体自行百度）
+file：文件路径 （试用下面方法可以快速获取文件路径）
+
+查看没有add的本地修改
+
+git diff或者git diff filename查看不在缓冲区的文件发生的改变
+
+git status 查看改变的文件列表
+git status -s 查看改变的文件列表简化版
+git diff或者git diff filename查看不在缓冲区的文件发生的改变
+git diff --cached或者git diff --staged查看缓冲区的文件发生的改变
+git diff HEAD是git diff和git diff --cached的合并
+
+查看某次提交的内容
+
+1. 获取commit id
+   git log 
+
+2. 查看commit内容
+   git show commit_id
+
+查看最近n次提交的修改
+   git log -p -n
+指定n为1则可以查看最近一次修改的内容
+
+撤销本地修改
+
+一、未使用 git add 缓存代码时 1.放弃某个文件的修改
+git checkout -- filepathname
+比如：
+ git checkout -- src/com/shc/test/Main.java
+
+2.放弃所有的文件修改
+使用 git checkout .  命令
+此命令用来放弃掉所有还没有加入到缓存区（就是 git add 命令）的修改：内容修改与整个文件删除。但是此命令不会删除掉刚新建的文件。因为刚新建的文件还没已有加入到 git 的管理系统中。所以对于git是未知的。自己手动删除就好了。
+
+二、已经使用了  git add 缓存了代码
+1.放弃某个文件的修改
+ git reset HEAD filepathname 
+
+2.放弃所有的文件修改
+使用 git reset HEAD . 命令。
+
+此命令用来清除 git  对于文件修改的缓存。相当于撤销 git add 命令所在的工作。在使用本命令后，本地的修改并不会消失，而是回到了如（一）所示的状态。继续用（一）中的操作，就可以放弃本地的修改。
+
+三、已经用 git commit  提交了代码
+可以使用 git reset --hard HEAD^ 来回退到上一次commit的状态。
+
+此命令可以用来回退到任意版本：git reset --hard  commitid 
+
+你可以使用 git log 命令来查看git的提交历史。
+
+删除没有Add的文件
+
+git clean -n
+是一次clean的演习, 告诉你哪些文件会被删除. 记住他不会真正的删除文件, 只是一个提醒
+
+
+git clean -f <path>
+删除指定路径下的没有被track过的文件
+
+git clean -f
+删除当前目录下所有没有track过的文件. 他不会删除.gitignore文件里面指定的文件夹和文件, 不管这些文件有没有被track过
+
+git clean -df
+删除当前目录下没有被track过的文件和文件夹
+
+git reset --hard和git clean -f是一对好基友. 结合使用他们能让你的工作目录完全回退到最近一次commit的时候
