@@ -9,10 +9,21 @@
 
 1、git reset <file>
 2、git reset HEAD <file>
+取消暂存文件
 
+本地修改/新增了一堆文件，已经git add到暂存区，想放弃修改。
+git reset HEAD filename
+所有文件/文件夹：
+git reset HEAD .
 上面俩种方式均可以
 HEAD：可以理解为一个指针（具体自行百度）
 file：文件路径 （试用下面方法可以快速获取文件路径）
+
+本地通过git add & git commit 之后，想要撤销此次commit
+git reset commit_id
+
+
+
 
 查看没有add的本地修改
 
